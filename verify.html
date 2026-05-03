@@ -8,12 +8,15 @@
     body {
       font-family: Arial;
       text-align: center;
-      background: #f5f5f5;
+      background: linear-gradient(to right, #667eea, #764ba2);
+      color: white;
     }
 
     input {
       padding: 10px;
       width: 250px;
+      border-radius: 5px;
+      border: none;
     }
 
     button {
@@ -22,6 +25,7 @@
       color: white;
       border: none;
       cursor: pointer;
+      border-radius: 5px;
     }
 
     #result {
@@ -29,6 +33,39 @@
       font-weight: bold;
     }
   </style>
+
+  <!-- Firebase CDN -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDmVNzV2w4zA5N-DzJm7Y3ffW9J2T3W0Vw",
+      authDomain: "al-fawz-technical-academy.firebaseapp.com",
+      projectId: "al-fawz-technical-academy",
+      storageBucket: "al-fawz-technical-academy.firebasestorage.app",
+      messagingSenderId: "490782662778",
+      appId: "1:490782662778:web:950f94305631c9602d5bc3"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    async function verify() {
+      var roll = document.getElementById("roll").value;
+
+      const doc = await db.collection("students").doc(roll).get();
+
+      if (doc.exists) {
+        const data = doc.data();
+        document.getElementById("result").innerHTML =
+          "✅ Verified - Name: " + data.name + " - Marks: " + data.marks;
+      } else {
+        document.getElementById("result").innerHTML =
+          "❌ No Record Found";
+      }
+    }
+  </script>
 
 </head>
 
@@ -38,23 +75,10 @@
 
 <input type="text" id="roll" placeholder="Enter Roll Number">
 <br><br>
+
 <button onclick="verify()">Verify</button>
 
 <div id="result"></div>
-
-<script>
-function verify() {
-  var roll = document.getElementById("roll").value;
-
-  if (roll == "1234") {
-    document.getElementById("result").innerHTML =
-      "✅ Certificate Verified - Student: Ali - Marks: 85%";
-  } else {
-    document.getElementById("result").innerHTML =
-      "❌ No Record Found";
-  }
-}
-</script>
 
 </body>
 
