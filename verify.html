@@ -119,7 +119,7 @@ fetch("https://script.google.com/macros/s/AKfycbwFozPXBsUOD2L4lpljJlKERQGJ0mPtkj
 
 if (data.status === "verified") {
 
-// 🔥 marks fix
+// marks fix
 let marks = data.marks.toString();
 if (marks.includes(".")) {
   marks = (parseFloat(marks) * 100).toFixed(0) + "%";
@@ -135,6 +135,7 @@ document.getElementById("result").innerHTML =
 
 <table>
 <tr><td class="label">Name</td><td>${data.name}</td></tr>
+<tr><td class="label">Father Name</td><td>${data.father_name}</td></tr>
 <tr><td class="label">Course</td><td>${data.course}</td></tr>
 <tr><td class="label">Marks</td><td>${marks}</td></tr>
 <tr><td class="label">Batch</td><td>${data.batch}</td></tr>
@@ -155,16 +156,7 @@ document.getElementById("result").innerHTML =
 
 }
 
-})
-.catch(() => {
-document.getElementById("result").innerHTML =
-`
-<div class="result-box notfound">
-⚠️ Error loading data
-</div>
-`;
 });
-
 }
 </script>
 
