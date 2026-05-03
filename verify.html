@@ -56,7 +56,6 @@
       border-radius: 15px;
       display: none;
       position: relative;
-      overflow: hidden;
     }
 
     .success {
@@ -96,61 +95,21 @@
       margin-top: 10px;
     }
 
-    /* 🔥 ANIMATED STAMP */
-    .stamp {
+    /* 🔥 IMAGE STAMP */
+    .stamp-img {
       position: absolute;
-      top: -35px;
-      right: -35px;
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #FFD700, #FFA500);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      color: #333;
-      transform: rotate(-20deg) scale(0);
-      animation: popIn 0.6s ease forwards;
-      box-shadow: 0 0 20px rgba(255,215,0,0.8), 
-                  0 5px 15px rgba(0,0,0,0.4);
+      top: -40px;
+      right: -40px;
+      width: 140px;
+      transform: rotate(-15deg) scale(0);
+      animation: pop 0.5s ease forwards;
+      filter: drop-shadow(0 5px 15px rgba(0,0,0,0.4));
     }
 
-    .stamp::after {
-      content: "VERIFIED";
-      font-size: 14px;
-    }
-
-    @keyframes popIn {
-      0% {
-        transform: rotate(-20deg) scale(0);
-        opacity: 0;
-      }
-      70% {
-        transform: rotate(-20deg) scale(1.2);
-      }
-      100% {
-        transform: rotate(-20deg) scale(1);
-        opacity: 1;
-      }
-    }
-
-    /* Shine effect */
-    .stamp::before {
-      content: "";
-      position: absolute;
-      width: 150%;
-      height: 40%;
-      background: rgba(255,255,255,0.4);
-      top: -20%;
-      left: -25%;
-      transform: rotate(25deg);
-      animation: shine 2s infinite;
-    }
-
-    @keyframes shine {
-      0% { left: -50%; }
-      100% { left: 100%; }
+    @keyframes pop {
+      0% { transform: rotate(-15deg) scale(0); opacity: 0; }
+      70% { transform: rotate(-15deg) scale(1.2); }
+      100% { transform: rotate(-15deg) scale(1); opacity: 1; }
     }
 
   </style>
@@ -185,7 +144,8 @@
         resultBox.className = "result-box success";
 
         resultBox.innerHTML = `
-          <div class="stamp"></div>
+          
+          <img src="stamp.png" class="stamp-img">
 
           <div class="verified-title">✔ Certificate Verified</div>
 
