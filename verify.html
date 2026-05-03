@@ -18,13 +18,12 @@
       background: white;
       padding: 30px;
       border-radius: 15px;
-      width: 350px;
+      width: 400px;
       text-align: center;
-      box-shadow: 0px 5px 20px rgba(0,0,0,0.3);
+      box-shadow: 0px 5px 25px rgba(0,0,0,0.3);
     }
 
     h1 {
-      color: black;
       margin-bottom: 20px;
     }
 
@@ -49,9 +48,10 @@
 
     .result-box {
       margin-top: 20px;
-      padding: 15px;
+      padding: 20px;
       border-radius: 10px;
       display: none;
+      text-align: left;
     }
 
     .success {
@@ -62,6 +62,25 @@
     .error {
       background: #f8d7da;
       color: #721c24;
+      text-align: center;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .card {
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      color: black;
+    }
+
+    .full {
+      grid-column: span 2;
     }
   </style>
 
@@ -93,10 +112,33 @@
       if (doc.exists) {
         const data = doc.data();
         resultBox.className = "result-box success";
+
         resultBox.innerHTML = `
-          <strong>✅ Verified</strong><br><br>
-          Name: ${data.name} <br>
-          Marks: ${data.marks}
+          <h3 style="text-align:center;">✅ Certificate Verified</h3>
+
+          <div class="grid">
+
+            <div class="card">
+              <strong>Name</strong><br>${data.name}
+            </div>
+
+            <div class="card">
+              <strong>Marks</strong><br>${data.marks}
+            </div>
+
+            <div class="card">
+              <strong>Course</strong><br>${data.course}
+            </div>
+
+            <div class="card">
+              <strong>Batch</strong><br>${data.batch}
+            </div>
+
+            <div class="card full">
+              <strong>Duration</strong><br>${data.duration}
+            </div>
+
+          </div>
         `;
       } else {
         resultBox.className = "result-box error";
