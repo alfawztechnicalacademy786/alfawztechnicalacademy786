@@ -9,7 +9,7 @@
 body {
   margin:0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg,#141e30,#243b55);
+  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
   color:white;
 }
 
@@ -79,9 +79,9 @@ td {
 }
 
 .stamp {
-  width:120px;
-  margin:10px auto;
+  width:130px;
   display:block;
+  margin:10px auto;
 }
 </style>
 
@@ -116,16 +116,18 @@ fetch("https://script.google.com/macros/s/AKfycbwFozPXBsUOD2L4lpljJlKERQGJ0mPtkj
 
 if (data.status === "verified") {
 
-let marks = data.marks;
-if(!marks.includes("%")){
-  marks = (parseFloat(marks) * 100) + "%";
+let marks = data.marks.toString();
+
+// 🔥 decimal کو percentage میں convert کریں
+if (marks.includes(".")) {
+  marks = (parseFloat(marks) * 100).toFixed(0) + "%";
 }
 
 document.getElementById("result").innerHTML =
 `
 <div class="result-box verified">
 
-<img src="stamp.png" class="stamp">
+<img src="./stamp.png" class="stamp">
 
 <h3>✅ Certificate Verified</h3>
 
