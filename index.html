@@ -14,61 +14,86 @@ margin:0;
 font-family:'Poppins',sans-serif;
 }
 
-/* NAVBAR FIX */
+/* NAVBAR */
 nav {
 position:fixed;
 top:0;
 width:100%;
-background:rgba(0,0,0,0.8);
+background:#111;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:10px;
-overflow-x:auto;
-white-space:nowrap;
+padding:10px 15px;
 z-index:1000;
 }
 
-nav h2 {
+.logo {
 color:white;
 font-size:16px;
-margin:0 10px;
-flex-shrink:0;
+font-weight:bold;
 }
 
-nav .menu {
+/* MENU BUTTON */
+.menu-btn {
+display:none;
+font-size:22px;
+color:white;
+cursor:pointer;
+}
+
+/* MENU */
+.menu {
 display:flex;
-flex-wrap:nowrap;
+gap:10px;
 }
 
-nav a {
+.menu a {
 color:white;
 text-decoration:none;
-margin:0 8px;
 font-size:14px;
-flex-shrink:0;
+padding:5px 8px;
+}
+
+/* MOBILE MENU */
+@media(max-width:768px){
+.menu {
+display:none;
+flex-direction:column;
+background:#111;
+position:absolute;
+top:50px;
+left:0;
+width:100%;
+}
+
+.menu.show {
+display:flex;
+}
+
+.menu-btn {
+display:block;
+}
 }
 
 /* HERO */
 .hero {
 height:100vh;
-background:black;
+background:linear-gradient(135deg,#1d2671,#c33764);
 color:white;
 display:flex;
 justify-content:center;
 align-items:center;
 text-align:center;
 padding:20px;
-margin-top:50px;
 }
 
 button {
 padding:10px 20px;
 margin:10px;
 border:none;
-border-radius:5px;
 background:#007bff;
 color:white;
+border-radius:5px;
 cursor:pointer;
 }
 
@@ -78,27 +103,34 @@ cursor:pointer;
 <body>
 
 <nav>
-<h2>🎓 Al Fawz</h2>
+<div class="logo">🎓 Al Fawz</div>
 
-<div class="menu">
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+<div class="menu" id="menu">
 <a href="#">Home</a>
 <a href="courses.html">Courses</a>
 <a href="verify.html">Verify</a>
 <a href="#">About</a>
 <a href="#">Contact</a>
 </div>
-
 </nav>
 
 <div class="hero">
 <div>
-<h1>Professional Academy Website</h1>
-<p>All tabs now visible ✔</p>
+<h1>All Tabs Now Visible</h1>
+<p>Professional Navbar Fixed</p>
 
 <button>Courses</button>
 <button>Verify</button>
 </div>
 </div>
+
+<script>
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("show");
+}
+</script>
 
 </body>
 </html>
