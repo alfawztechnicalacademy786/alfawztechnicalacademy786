@@ -19,30 +19,65 @@ nav {
 position:fixed;
 top:0;
 width:100%;
-background:rgba(0,0,0,0.75);
+background:rgba(0,0,0,0.8);
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:10px 20px;
+padding:10px 15px;
 z-index:1000;
 }
 
 .logo {
 color:white;
-font-size:16px;
+font-size:14px;
 font-weight:600;
 white-space:nowrap;
 }
 
-.menu {
+/* RIGHT SIDE */
+.right {
 display:flex;
-gap:12px;
+align-items:center;
+gap:10px;
 }
 
-.menu a {
+/* LINKS */
+.right a {
 color:white;
 text-decoration:none;
-font-size:14px;
+font-size:13px;
+}
+
+/* MENU BUTTON */
+.menu-btn {
+font-size:20px;
+color:white;
+cursor:pointer;
+}
+
+/* SIDE MENU */
+.side-menu {
+position:fixed;
+top:0;
+left:-250px;
+width:250px;
+height:100%;
+background:#111;
+padding-top:60px;
+transition:0.3s;
+z-index:2000;
+}
+
+.side-menu a {
+display:block;
+color:white;
+padding:15px;
+text-decoration:none;
+border-bottom:1px solid #333;
+}
+
+.side-menu a:hover {
+background:#222;
 }
 
 /* HERO */
@@ -54,8 +89,6 @@ overflow:hidden;
 
 .hero video {
 position:absolute;
-top:0;
-left:0;
 width:100%;
 height:100%;
 object-fit:cover;
@@ -75,27 +108,18 @@ color:white;
 text-align:center;
 top:50%;
 transform:translateY(-50%);
-padding:20px;
 }
 
 .hero-content h1 {
-font-size:38px;
-margin-bottom:10px;
+font-size:34px;
 }
 
-.hero-content p {
-font-size:16px;
-margin-bottom:20px;
-}
-
-/* BUTTONS */
 .btn {
-padding:12px 25px;
+padding:10px 20px;
 margin:10px;
 border:none;
 border-radius:25px;
 cursor:pointer;
-font-size:14px;
 }
 
 .blue {background:#007bff;color:white}
@@ -129,31 +153,34 @@ color:white;
 text-align:center;
 padding:15px;
 }
-
-/* MOBILE FIX */
-@media(max-width:768px){
-.menu {
-flex-wrap:wrap;
-justify-content:center;
-}
-}
 </style>
 </head>
 
 <body>
 
-<nav>
-<div class="logo">Al Fawz</div>
-
-<div class="menu">
+<!-- SIDE MENU -->
+<div class="side-menu" id="menu">
 <a href="#">Home</a>
 <a href="courses.html">Courses</a>
 <a href="verify.html">Verify</a>
 <a href="#">About</a>
 <a href="#">Contact</a>
 </div>
+
+<!-- NAVBAR -->
+<nav>
+
+<div class="logo">Al Fawz Technical Academy</div>
+
+<div class="right">
+<a href="verify.html">Verify</a>
+<a href="#">Contact</a>
+<div class="menu-btn" onclick="openMenu()">☰</div>
+</div>
+
 </nav>
 
+<!-- HERO -->
 <div class="hero">
 
 <video autoplay muted loop playsinline>
@@ -166,12 +193,13 @@ justify-content:center;
 <h1>Build Your Future With Skills</h1>
 <p>Professional IT Courses & Certification</p>
 
-<a href="courses.html"><button class="btn blue">View Courses</button></a>
-<a href="verify.html"><button class="btn green">Verify Certificate</button></a>
+<a href="courses.html"><button class="btn blue">Courses</button></a>
+<a href="verify.html"><button class="btn green">Verify</button></a>
 </div>
 
 </div>
 
+<!-- COURSES -->
 <div class="section">
 <h2>Our Courses</h2>
 
@@ -180,12 +208,22 @@ justify-content:center;
 <div class="card"><h3>Graphic Design</h3></div>
 <div class="card"><h3>Freelancing</h3></div>
 </div>
-
 </div>
 
 <footer>
 © 2026 Al Fawz Technical Academy
 </footer>
+
+<script>
+function openMenu(){
+let menu = document.getElementById("menu");
+if(menu.style.left === "0px"){
+menu.style.left = "-250px";
+}else{
+menu.style.left = "0px";
+}
+}
+</script>
 
 </body>
 </html>
