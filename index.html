@@ -19,48 +19,49 @@ nav {
 position:fixed;
 top:0;
 width:100%;
-background:rgba(0,0,0,0.8);
+background:rgba(0,0,0,0.85);
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:10px 15px;
+padding:12px 20px;
+box-sizing:border-box;
 z-index:1000;
 }
 
 .logo {
 color:white;
-font-size:14px;
+font-size:15px;
 font-weight:600;
-white-space:nowrap;
 }
 
 /* RIGHT SIDE */
 .right {
 display:flex;
 align-items:center;
-gap:10px;
+gap:15px;
 }
 
-/* LINKS */
 .right a {
 color:white;
 text-decoration:none;
-font-size:13px;
+font-size:14px;
 }
 
-/* MENU BUTTON */
+/* MENU BUTTON FIX */
 .menu-btn {
-font-size:20px;
+font-size:22px;
 color:white;
 cursor:pointer;
+padding:5px 10px;
+margin-right:10px; /* 👈 IMPORTANT FIX */
 }
 
-/* SIDE MENU */
+/* RIGHT SIDE SLIDE MENU */
 .side-menu {
 position:fixed;
 top:0;
-left:-250px;
-width:250px;
+right:-260px;
+width:260px;
 height:100%;
 background:#111;
 padding-top:60px;
@@ -175,7 +176,7 @@ padding:15px;
 <div class="right">
 <a href="verify.html">Verify</a>
 <a href="#">Contact</a>
-<div class="menu-btn" onclick="openMenu()">☰</div>
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
 </div>
 
 </nav>
@@ -208,6 +209,7 @@ padding:15px;
 <div class="card"><h3>Graphic Design</h3></div>
 <div class="card"><h3>Freelancing</h3></div>
 </div>
+
 </div>
 
 <footer>
@@ -215,12 +217,13 @@ padding:15px;
 </footer>
 
 <script>
-function openMenu(){
+function toggleMenu(){
 let menu = document.getElementById("menu");
-if(menu.style.left === "0px"){
-menu.style.left = "-250px";
+
+if(menu.style.right === "0px"){
+menu.style.right = "-260px";
 }else{
-menu.style.left = "0px";
+menu.style.right = "0px";
 }
 }
 </script>
