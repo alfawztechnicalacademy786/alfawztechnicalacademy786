@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Verify Certificate</title>
 
 <style>
 body{
-font-family:sans-serif;
+font-family:'Poppins',sans-serif;
 background:#f4f7fa;
 text-align:center;
 padding:20px;
@@ -24,22 +25,45 @@ box-shadow:0 5px 15px rgba(0,0,0,0.2);
 
 input{
 width:90%;
-padding:10px;
+padding:12px;
 margin:10px 0;
+border-radius:5px;
+border:1px solid #ccc;
 }
 
 button{
-padding:10px 20px;
+padding:12px 20px;
 background:#007bff;
 color:white;
 border:none;
+border-radius:5px;
 cursor:pointer;
 }
 
 .result{
 margin-top:20px;
 text-align:left;
+padding:15px;
+border-radius:10px;
+background:#eafaf1;
+display:none;
 }
+
+.fail{
+background:#ffe6e6;
+}
+
+.stamp{
+margin-top:15px;
+font-size:22px;
+font-weight:bold;
+color:green;
+border:2px solid green;
+display:inline-block;
+padding:8px 20px;
+border-radius:50px;
+}
+
 </style>
 </head>
 
@@ -58,28 +82,49 @@ text-align:left;
 </div>
 
 <script>
+
 function verify(){
 
 let roll = document.getElementById("roll").value;
 
-let data = [
-{roll:"1001", name:"Ali Raza", father:"Ahmed Raza", course:"Graphic Design", marks:"18/20"},
-{roll:"1002", name:"Usman", father:"Khalid", course:"Web Dev", marks:"15/20"}
-];
+fetch("https://script.google.com/macros/s/AKfycbzT37zdrF_FARcNI2Pdp7NMbXWTa9BuKK9HmSt-zO9YSrrsmgp1aajjgl4SAi2PnS0Zyg/exec")
 
-let result = data.find(d => d.roll === roll);
+.then(res => res.json())
+.then(data => {
 
-if(result){
-document.getElementById("result").innerHTML =
-"<b>Name:</b> "+result.name+"<br>"+
-"<b>Father Name:</b> "+result.father+"<br>"+
-"<b>Course:</b> "+result.course+"<br>"+
-"<b>Marks:</b> "+result.marks;
+let student = data.find(s => s.id == roll);
+
+let resultBox = document.getElementById("result");
+
+if(student){
+
+resultBox.style.display = "block";
+resultBox.classList.remove("fail");
+
+resultBox.innerHTML = `
+<b>Name:</b> ${student.name}<br>
+<b>Father Name:</b> ${student.father}<br>
+<b>Course:</b> ${student.course}<br>
+<b>Marks:</b> ${student.marks}<br>
+<b>Batch:</b> ${student.batch}<br>
+<b>Duration:</b> ${student.duration}<br>
+
+<div class="stamp">✔ CERTIFIED</div>
+`;
+
 }else{
-document.getElementById("result").innerHTML = "Record not found";
-}
+
+resultBox.style.display = "block";
+resultBox.classList.add("fail");
+
+resultBox.innerHTML = "❌ Record Not Found";
 
 }
+
+});
+
+}
+
 </script>
 
 </body>
