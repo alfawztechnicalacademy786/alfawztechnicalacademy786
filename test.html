@@ -1,1 +1,62 @@
-<a href="https://docs.google.com/forms/d/e/1FAIpQLSez9CbsCullScpjUQXfGiiUhdfLcb8hTFHF3C7gbzULoEDNGA/viewform?usp=publish-editor" target="_blank">
+<!DOCTYPE html>
+<html>
+<head>
+<title>Start Test</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+font-family:sans-serif;
+text-align:center;
+background:#f4f7fa;
+padding:20px;
+}
+
+.box {
+background:white;
+padding:25px;
+max-width:400px;
+margin:auto;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+button {
+padding:12px 20px;
+background:#007bff;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+</style>
+
+<script>
+function checkAccess() {
+
+let approved = localStorage.getItem("approved");
+
+if(approved === "yes"){
+window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSez9CbsCullScpjUQXfGiiUhdfLcb8hTFHF3C7gbzULoEDNGA/viewform?usp=publish-editor";
+} else {
+alert("Please pay fee first and get approval from admin.");
+}
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>Start Your Test</h1>
+
+<p>Only approved students can attempt this test.</p>
+
+<button onclick="checkAccess()">Start Test</button>
+
+</div>
+
+</body>
+</html>
