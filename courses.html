@@ -9,14 +9,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-body {
+body{
 margin:0;
 font-family:'Poppins',sans-serif;
 background:#f4f7fa;
 }
 
 /* NAVBAR */
-nav {
+nav{
 background:#111;
 color:white;
 padding:12px 20px;
@@ -25,31 +25,56 @@ justify-content:space-between;
 align-items:center;
 }
 
-nav a {
+nav a{
 color:white;
 text-decoration:none;
-margin-left:10px;
-font-size:14px;
+margin-left:15px;
 }
 
-/* HEADING */
-.header {
+/* HEADER */
+.header{
 text-align:center;
-padding:30px 20px;
+padding:40px 20px;
+background:linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f');
+background-size:cover;
+background-position:center;
+color:white;
 }
 
-.header h1 {
+.header h1{
+font-size:32px;
 margin-bottom:10px;
 }
 
+/* BIG TEST BUTTON */
+.test-btn{
+margin-top:20px;
+padding:15px 35px;
+font-size:18px;
+border:none;
+border-radius:30px;
+background:#ff9800;
+color:white;
+cursor:pointer;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+transition:0.3s;
+}
+
+.test-btn:hover{
+background:#e68900;
+transform:scale(1.05);
+}
+
 /* COURSES */
-.container {
+.container{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
+padding:20px;
 }
 
-.card {
+.card{
 background:white;
 width:320px;
 margin:15px;
@@ -59,26 +84,25 @@ box-shadow:0 10px 25px rgba(0,0,0,0.1);
 text-align:center;
 }
 
-iframe {
+iframe{
 width:100%;
 height:200px;
 border-radius:8px;
 }
 
-/* BUTTON */
-.btn {
-padding:12px 20px;
-margin-top:15px;
+.btn{
+padding:10px 18px;
+margin-top:10px;
 border:none;
-border-radius:25px;
+border-radius:20px;
 cursor:pointer;
 font-size:14px;
-background:#007bff;
 color:white;
+background:#007bff;
 }
 
 /* FOOTER */
-footer {
+footer{
 background:#111;
 color:white;
 text-align:center;
@@ -94,58 +118,50 @@ margin-top:30px;
 <!-- NAVBAR -->
 <nav>
 <div>Al Fawz Technical Academy</div>
-
 <div>
 <a href="index.html">Home</a>
 <a href="verify.html">Verify</a>
+<a href="contact.html">Contact</a>
 </div>
 </nav>
 
 <!-- HEADER -->
 <div class="header">
+
 <h1>Our Courses</h1>
-<p>Watch videos and get certified</p>
+<p>Learn Skills & Get Certified</p>
+
+<a href="test.html">
+<button class="test-btn">Start Test</button>
+</a>
+
 </div>
 
 <!-- COURSES -->
 <div class="container">
 
-<!-- COURSE 1 -->
 <div class="card">
 <h3>Web Development</h3>
-
-<iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
-
+<iframe src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
+<br>
 <a href="enroll.html">
 <button class="btn">Get Certificate</button>
 </a>
-
-<br><br>
-
-<a href="test.html">
-<button style="padding:10px 20px; background:#ff9800; color:white; border:none; border-radius:5px; cursor:pointer;">
-Start Test
-</button>
-</a>
 </div>
 
-<!-- COURSE 2 -->
 <div class="card">
-<h3>Graphic Design</h3>
-
-<iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
-
+<h3>Graphic Designing</h3>
+<iframe src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
+<br>
 <a href="enroll.html">
 <button class="btn">Get Certificate</button>
 </a>
 </div>
 
-<!-- COURSE 3 -->
 <div class="card">
 <h3>Freelancing</h3>
-
-<iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
-
+<iframe src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
+<br>
 <a href="enroll.html">
 <button class="btn">Get Certificate</button>
 </a>
