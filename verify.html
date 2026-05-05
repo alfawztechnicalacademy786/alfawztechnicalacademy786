@@ -8,36 +8,47 @@
 
 <style>
 body{
-font-family: Arial, sans-serif;
-background:#f4f7fa;
+margin:0;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:white;
 text-align:center;
-padding:20px;
 }
 
 .container{
-max-width:700px;
-margin:auto;
+max-width:750px;
+margin:50px auto;
 background:white;
-padding:25px;
-border-radius:10px;
-box-shadow:0 5px 20px rgba(0,0,0,0.2);
+color:black;
+padding:30px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+h2{
+margin-bottom:20px;
 }
 
 input{
 width:80%;
 padding:12px;
-margin:10px;
-border-radius:5px;
+border-radius:6px;
 border:1px solid #ccc;
+margin-bottom:10px;
 }
 
 button{
 padding:12px 25px;
-background:#007bff;
+background:#28a745;
 color:white;
 border:none;
-border-radius:5px;
+border-radius:6px;
 cursor:pointer;
+font-size:16px;
+}
+
+button:hover{
+background:#218838;
 }
 
 table{
@@ -48,9 +59,8 @@ display:none;
 }
 
 td{
-padding:10px;
+padding:12px;
 border-bottom:1px solid #ddd;
-text-align:left;
 }
 
 .label{
@@ -64,15 +74,16 @@ display:none;
 }
 
 .stamp img{
-width:150px;
-opacity:0.9;
+width:160px;
 }
 
 .error{
-color:red;
 margin-top:20px;
+color:red;
 display:none;
+font-weight:bold;
 }
+
 </style>
 
 </head>
@@ -87,7 +98,6 @@ display:none;
 <br>
 <button onclick="verify()">Verify</button>
 
-<!-- RESULT TABLE -->
 <table id="resultTable">
 <tr><td class="label">Name:</td><td id="name"></td></tr>
 <tr><td class="label">Father Name:</td><td id="father"></td></tr>
@@ -97,7 +107,6 @@ display:none;
 <tr><td class="label">Duration:</td><td id="duration"></td></tr>
 </table>
 
-<!-- STAMP -->
 <div class="stamp" id="stamp">
 <img src="stamp.png">
 </div>
@@ -125,10 +134,18 @@ document.getElementById("resultTable").style.display="table";
 document.getElementById("stamp").style.display="block";
 document.getElementById("error").style.display="none";
 
+/* ✅ MARKS FIX */
+let marks = student.marks;
+
+// اگر marks 0.95 ہو تو اسے % میں convert کریں
+if(marks <= 1){
+marks = (marks * 100).toFixed(0) + "%";
+}
+
 document.getElementById("name").innerText = student.name;
 document.getElementById("father").innerText = student.father;
 document.getElementById("course").innerText = student.course;
-document.getElementById("marks").innerText = student.marks;
+document.getElementById("marks").innerText = marks;
 document.getElementById("batch").innerText = student.batch;
 document.getElementById("duration").innerText = student.duration;
 
