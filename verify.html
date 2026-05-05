@@ -4,31 +4,36 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Verify Certificate</title>
+<title>Certificate Verification</title>
 
 <style>
+
 body{
 margin:0;
-font-family:'Poppins',sans-serif;
-background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-color:white;
-text-align:center;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#1e3c72,#2a5298);
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
 }
 
+/* MAIN CARD */
 .container{
-max-width:750px;
-margin:50px auto;
 background:white;
-color:black;
+width:90%;
+max-width:800px;
 padding:30px;
-border-radius:12px;
-box-shadow:0 10px 30px rgba(0,0,0,0.4);
+border-radius:15px;
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
+text-align:center;
 }
 
 h2{
 margin-bottom:20px;
 }
 
+/* INPUT */
 input{
 width:80%;
 padding:12px;
@@ -38,50 +43,81 @@ margin-bottom:10px;
 }
 
 button{
-padding:12px 25px;
+padding:12px 30px;
 background:#28a745;
 color:white;
 border:none;
 border-radius:6px;
 cursor:pointer;
 font-size:16px;
+transition:0.3s;
 }
 
 button:hover{
 background:#218838;
 }
 
+/* RESULT CARD */
+.result-card{
+margin-top:25px;
+padding:20px;
+border-radius:10px;
+background:linear-gradient(135deg,#f8f9fa,#e9ecef);
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+display:none;
+position:relative;
+}
+
+/* TABLE */
 table{
 width:100%;
-margin-top:20px;
 border-collapse:collapse;
-display:none;
 }
 
 td{
 padding:12px;
 border-bottom:1px solid #ddd;
+text-align:left;
 }
 
 .label{
 font-weight:bold;
+color:#333;
 width:40%;
 }
 
+.value{
+color:#000;
+}
+
+/* PASS BADGE */
+.badge{
+position:absolute;
+top:15px;
+right:15px;
+background:#28a745;
+color:white;
+padding:6px 15px;
+border-radius:20px;
+font-size:14px;
+}
+
+/* STAMP */
 .stamp{
 margin-top:20px;
-display:none;
 }
 
 .stamp img{
-width:160px;
+width:180px;
+opacity:0.9;
 }
 
+/* ERROR */
 .error{
 margin-top:20px;
 color:red;
-display:none;
 font-weight:bold;
+display:none;
 }
 
 </style>
@@ -98,17 +134,24 @@ font-weight:bold;
 <br>
 <button onclick="verify()">Verify</button>
 
-<table id="resultTable">
-<tr><td class="label">Name:</td><td id="name"></td></tr>
-<tr><td class="label">Father Name:</td><td id="father"></td></tr>
-<tr><td class="label">Course:</td><td id="course"></td></tr>
-<tr><td class="label">Marks:</td><td id="marks"></td></tr>
-<tr><td class="label">Batch:</td><td id="batch"></td></tr>
-<tr><td class="label">Duration:</td><td id="duration"></td></tr>
+<!-- RESULT -->
+<div class="result-card" id="card">
+
+<div class="badge">VERIFIED</div>
+
+<table>
+<tr><td class="label">Student Name</td><td class="value" id="name"></td></tr>
+<tr><td class="label">Father Name</td><td class="value" id="father"></td></tr>
+<tr><td class="label">Course</td><td class="value" id="course"></td></tr>
+<tr><td class="label">Marks</td><td class="value" id="marks"></td></tr>
+<tr><td class="label">Batch</td><td class="value" id="batch"></td></tr>
+<tr><td class="label">Duration</td><td class="value" id="duration"></td></tr>
 </table>
 
-<div class="stamp" id="stamp">
+<div class="stamp">
 <img src="stamp.png">
+</div>
+
 </div>
 
 <div class="error" id="error">❌ Record Not Found</div>
@@ -130,14 +173,11 @@ let student = data.find(s => s.id == roll);
 
 if(student){
 
-document.getElementById("resultTable").style.display="table";
-document.getElementById("stamp").style.display="block";
+document.getElementById("card").style.display="block";
 document.getElementById("error").style.display="none";
 
-/* ✅ MARKS FIX */
+/* MARKS FIX */
 let marks = student.marks;
-
-// اگر marks 0.95 ہو تو اسے % میں convert کریں
 if(marks <= 1){
 marks = (marks * 100).toFixed(0) + "%";
 }
@@ -151,8 +191,7 @@ document.getElementById("duration").innerText = student.duration;
 
 }else{
 
-document.getElementById("resultTable").style.display="none";
-document.getElementById("stamp").style.display="none";
+document.getElementById("card").style.display="none";
 document.getElementById("error").style.display="block";
 
 }
