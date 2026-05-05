@@ -12,37 +12,53 @@
 body{
 margin:0;
 font-family:'Segoe UI',sans-serif;
-background:linear-gradient(135deg,#141e30,#243b55);
-height:100vh;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
 }
 
+/* MAIN WRAPPER */
+.wrapper{
+width:90%;
+max-width:900px;
+}
+
+/* HEADER */
+.header{
+color:white;
+text-align:center;
+margin-bottom:20px;
+}
+
+.header h1{
+margin:0;
+font-size:28px;
+}
+
+.header p{
+margin:5px 0;
+opacity:0.8;
+}
+
 /* MAIN CARD */
 .container{
-width:90%;
-max-width:850px;
-background:rgba(255,255,255,0.1);
-backdrop-filter:blur(15px);
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(20px);
 padding:30px;
 border-radius:20px;
-box-shadow:0 20px 50px rgba(0,0,0,0.5);
+box-shadow:0 20px 60px rgba(0,0,0,0.5);
 color:white;
 text-align:center;
 }
 
-/* TITLE */
-h2{
-margin-bottom:20px;
-}
-
 /* INPUT */
 input{
-width:75%;
+width:70%;
 padding:12px;
-border:none;
 border-radius:8px;
+border:none;
 margin-bottom:10px;
 outline:none;
 }
@@ -50,8 +66,8 @@ outline:none;
 button{
 padding:12px 30px;
 background:#00c9ff;
-color:white;
 border:none;
+color:white;
 border-radius:8px;
 cursor:pointer;
 font-size:16px;
@@ -65,24 +81,37 @@ background:#0099cc;
 /* RESULT CARD */
 .result{
 margin-top:25px;
-padding:20px;
+padding:25px;
 border-radius:15px;
 background:white;
 color:black;
 display:none;
-animation:fadeIn 0.5s ease;
 position:relative;
+animation:fade 0.5s ease;
 }
 
-@keyframes fadeIn{
+@keyframes fade{
 from{opacity:0; transform:translateY(20px);}
 to{opacity:1; transform:translateY(0);}
+}
+
+/* VERIFIED RIBBON */
+.ribbon{
+position:absolute;
+top:0;
+left:0;
+background:#28a745;
+color:white;
+padding:8px 20px;
+border-bottom-right-radius:10px;
+font-size:14px;
 }
 
 /* TABLE */
 table{
 width:100%;
 border-collapse:collapse;
+margin-top:10px;
 }
 
 td{
@@ -100,26 +129,17 @@ width:40%;
 color:#000;
 }
 
-/* VERIFIED BADGE */
-.badge{
-position:absolute;
-top:15px;
-right:15px;
-background:#28a745;
-color:white;
-padding:6px 15px;
-border-radius:20px;
-font-size:14px;
-}
-
-/* STAMP */
+/* STAMP (corner style) */
 .stamp{
-margin-top:20px;
+position:absolute;
+bottom:15px;
+right:15px;
 }
 
 .stamp img{
-width:200px;
+width:140px;
 opacity:0.85;
+transform:rotate(-15deg);
 }
 
 /* ERROR */
@@ -136,18 +156,22 @@ font-weight:bold;
 
 <body>
 
-<div class="container">
+<div class="wrapper">
 
-<h2>Certificate Verification</h2>
+<div class="header">
+<h1>Al Fawz Technical Academy</h1>
+<p>Certificate Verification System</p>
+</div>
+
+<div class="container">
 
 <input type="text" id="roll" placeholder="Enter Roll Number">
 <br>
 <button onclick="verify()">Verify</button>
 
-<!-- RESULT -->
 <div class="result" id="resultBox">
 
-<div class="badge">VERIFIED</div>
+<div class="ribbon">VERIFIED</div>
 
 <table>
 <tr><td class="label">Student Name</td><td id="name"></td></tr>
@@ -165,6 +189,8 @@ font-weight:bold;
 </div>
 
 <div class="error" id="error">❌ Record Not Found</div>
+
+</div>
 
 </div>
 
