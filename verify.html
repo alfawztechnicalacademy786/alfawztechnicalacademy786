@@ -3,160 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Certificate Verification</title>
+<title>Verify Certificate</title>
 
 <style>
-body {
-  margin:0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg,#1d2671,#c33764);
-  color:white;
+body{
+font-family:sans-serif;
+background:#f4f7fa;
+text-align:center;
+padding:20px;
 }
 
-header {
-  text-align:center;
-  padding:20px;
-  font-size:24px;
-  font-weight:bold;
+.box{
+background:white;
+padding:25px;
+max-width:400px;
+margin:auto;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
 
-.container {
-  max-width:600px;
-  margin:40px auto;
-  background:white;
-  color:black;
-  padding:25px;
-  border-radius:10px;
-  text-align:center;
+input{
+width:90%;
+padding:10px;
+margin:10px 0;
 }
 
-input {
-  padding:10px;
-  width:80%;
-  margin:10px;
-  border-radius:6px;
+button{
+padding:10px 20px;
+background:#007bff;
+color:white;
+border:none;
+cursor:pointer;
 }
 
-button {
-  padding:10px 20px;
-  background:green;
-  color:white;
-  border:none;
-  border-radius:6px;
-  cursor:pointer;
-}
-
-.result-box {
-  margin-top:20px;
-  padding:15px;
-  border-radius:10px;
-}
-
-.verified {
-  background:#d4edda;
-}
-
-.notfound {
-  background:#f8d7da;
-}
-
-table {
-  width:100%;
-  margin-top:10px;
-  border-collapse:collapse;
-}
-
-td {
-  padding:8px;
-  border-bottom:1px solid #ccc;
-}
-
-.label {
-  font-weight:bold;
-  width:40%;
-}
-
-.stamp {
-  width:120px;
-  display:block;
-  margin:10px auto;
+.result{
+margin-top:20px;
+text-align:left;
 }
 </style>
-
 </head>
 
 <body>
 
-<header>
-🎓 Al Fawz Technical Academy
-</header>
-
-<div class="container">
+<div class="box">
 
 <h2>Verify Certificate</h2>
 
-<input type="text" id="roll" placeholder="Enter Roll No (FA-1234)">
-<br>
+<input type="text" id="roll" placeholder="Enter Roll Number">
+
 <button onclick="verify()">Verify</button>
 
-<div id="result"></div>
+<div class="result" id="result"></div>
 
 </div>
 
 <script>
-function verify() {
+function verify(){
 
-let id = document.getElementById("roll").value.trim();
+let roll = document.getElementById("roll").value;
 
-if(!id){
-  alert("Roll number enter کریں");
-  return;
-}
+let data = [
+{roll:"1001", name:"Ali Raza", father:"Ahmed Raza", course:"Graphic Design", marks:"18/20"},
+{roll:"1002", name:"Usman", father:"Khalid", course:"Web Dev", marks:"15/20"}
+];
 
-fetch("https://script.google.com/macros/s/AKfycbwFozPXBsUOD2L4lpljJlKERQGJ0mPtkjV-wKdzTvFWeq1P675f0LmRmkI3u1dKk-coJw/exec?id=" + id)
-.then(res => res.json())
-.then(data => {
+let result = data.find(d => d.roll === roll);
 
-if (data.status === "verified") {
-
-// marks fix
-let marks = data.marks.toString();
-if (marks.includes(".")) {
-  marks = (parseFloat(marks) * 100).toFixed(0) + "%";
-}
-
+if(result){
 document.getElementById("result").innerHTML =
-`
-<div class="result-box verified">
-
-<img src="stamp.png" class="stamp">
-
-<h3>✅ Certificate Verified</h3>
-
-<table>
-<tr><td class="label">Name</td><td>${data.name}</td></tr>
-<tr><td class="label">Father Name</td><td>${data.father_name}</td></tr>
-<tr><td class="label">Course</td><td>${data.course}</td></tr>
-<tr><td class="label">Marks</td><td>${marks}</td></tr>
-<tr><td class="label">Batch</td><td>${data.batch}</td></tr>
-<tr><td class="label">Duration</td><td>${data.duration || "Not Available"}</td></tr>
-</table>
-
-</div>
-`;
-
-} else {
-
-document.getElementById("result").innerHTML =
-`
-<div class="result-box notfound">
-❌ Record Not Found
-</div>
-`;
-
+"<b>Name:</b> "+result.name+"<br>"+
+"<b>Father Name:</b> "+result.father+"<br>"+
+"<b>Course:</b> "+result.course+"<br>"+
+"<b>Marks:</b> "+result.marks;
+}else{
+document.getElementById("result").innerHTML = "Record not found";
 }
 
-});
 }
 </script>
 
