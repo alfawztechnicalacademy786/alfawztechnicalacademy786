@@ -8,64 +8,75 @@
 
 <style>
 
+/* BACKGROUND */
 body{
 margin:0;
 font-family:'Segoe UI',sans-serif;
-background:linear-gradient(135deg,#1e3c72,#2a5298);
+background:linear-gradient(135deg,#141e30,#243b55);
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-min-height:100vh;
 }
 
 /* MAIN CARD */
 .container{
-background:white;
 width:90%;
-max-width:800px;
+max-width:850px;
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(15px);
 padding:30px;
-border-radius:15px;
-box-shadow:0 15px 40px rgba(0,0,0,0.4);
+border-radius:20px;
+box-shadow:0 20px 50px rgba(0,0,0,0.5);
+color:white;
 text-align:center;
 }
 
+/* TITLE */
 h2{
 margin-bottom:20px;
 }
 
 /* INPUT */
 input{
-width:80%;
+width:75%;
 padding:12px;
-border-radius:6px;
-border:1px solid #ccc;
+border:none;
+border-radius:8px;
 margin-bottom:10px;
+outline:none;
 }
 
 button{
 padding:12px 30px;
-background:#28a745;
+background:#00c9ff;
 color:white;
 border:none;
-border-radius:6px;
+border-radius:8px;
 cursor:pointer;
 font-size:16px;
 transition:0.3s;
 }
 
 button:hover{
-background:#218838;
+background:#0099cc;
 }
 
 /* RESULT CARD */
-.result-card{
+.result{
 margin-top:25px;
 padding:20px;
-border-radius:10px;
-background:linear-gradient(135deg,#f8f9fa,#e9ecef);
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
+border-radius:15px;
+background:white;
+color:black;
 display:none;
+animation:fadeIn 0.5s ease;
 position:relative;
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
 }
 
 /* TABLE */
@@ -75,14 +86,13 @@ border-collapse:collapse;
 }
 
 td{
-padding:12px;
-border-bottom:1px solid #ddd;
-text-align:left;
+padding:14px;
+border-bottom:1px solid #eee;
 }
 
 .label{
 font-weight:bold;
-color:#333;
+color:#555;
 width:40%;
 }
 
@@ -90,7 +100,7 @@ width:40%;
 color:#000;
 }
 
-/* PASS BADGE */
+/* VERIFIED BADGE */
 .badge{
 position:absolute;
 top:15px;
@@ -108,16 +118,16 @@ margin-top:20px;
 }
 
 .stamp img{
-width:180px;
-opacity:0.9;
+width:200px;
+opacity:0.85;
 }
 
 /* ERROR */
 .error{
 margin-top:20px;
-color:red;
-font-weight:bold;
+color:#ff4d4d;
 display:none;
+font-weight:bold;
 }
 
 </style>
@@ -135,17 +145,17 @@ display:none;
 <button onclick="verify()">Verify</button>
 
 <!-- RESULT -->
-<div class="result-card" id="card">
+<div class="result" id="resultBox">
 
 <div class="badge">VERIFIED</div>
 
 <table>
-<tr><td class="label">Student Name</td><td class="value" id="name"></td></tr>
-<tr><td class="label">Father Name</td><td class="value" id="father"></td></tr>
-<tr><td class="label">Course</td><td class="value" id="course"></td></tr>
-<tr><td class="label">Marks</td><td class="value" id="marks"></td></tr>
-<tr><td class="label">Batch</td><td class="value" id="batch"></td></tr>
-<tr><td class="label">Duration</td><td class="value" id="duration"></td></tr>
+<tr><td class="label">Student Name</td><td id="name"></td></tr>
+<tr><td class="label">Father Name</td><td id="father"></td></tr>
+<tr><td class="label">Course</td><td id="course"></td></tr>
+<tr><td class="label">Marks</td><td id="marks"></td></tr>
+<tr><td class="label">Batch</td><td id="batch"></td></tr>
+<tr><td class="label">Duration</td><td id="duration"></td></tr>
 </table>
 
 <div class="stamp">
@@ -173,7 +183,7 @@ let student = data.find(s => s.id == roll);
 
 if(student){
 
-document.getElementById("card").style.display="block";
+document.getElementById("resultBox").style.display="block";
 document.getElementById("error").style.display="none";
 
 /* MARKS FIX */
@@ -191,7 +201,7 @@ document.getElementById("duration").innerText = student.duration;
 
 }else{
 
-document.getElementById("card").style.display="none";
+document.getElementById("resultBox").style.display="none";
 document.getElementById("error").style.display="block";
 
 }
