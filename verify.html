@@ -228,6 +228,15 @@ document.getElementById("course").innerText = student.course;
 document.getElementById("marks").innerText = marks;
 document.getElementById("batch").innerText = student.batch;
 document.getElementById("duration").innerText = student.duration;
+  // ✅ Certificate Button Show Fix
+let btn = document.getElementById("certBtn");
+
+if(student.certificate && student.certificate.trim() !== ""){
+  btn.href = student.certificate;
+  btn.style.display = "inline-block";
+}else{
+  btn.style.display = "none";
+}
 if(student.certificate && student.certificate !== ""){
   document.getElementById("certBtn").href = student.certificate;
   document.getElementById("certBtn").style.display = "inline-block";
