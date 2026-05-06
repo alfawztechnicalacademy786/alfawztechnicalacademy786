@@ -215,6 +215,16 @@ font-weight:bold;
 <script>
 
 function verify(){
+function openPreview(e){
+e.preventDefault();
+let link = document.getElementById("certBtn").href;
+document.getElementById("previewFrame").src = link;
+document.getElementById("previewBox").style.display = "flex";
+}
+
+function closePreview(){
+  document.getElementById("previewBox").style.display = "none";
+}
 
 let roll = document.getElementById("roll").value;
 
