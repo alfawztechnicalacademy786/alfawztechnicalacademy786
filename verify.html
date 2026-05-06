@@ -231,17 +231,11 @@ document.getElementById("course").innerText = student.course;
 document.getElementById("marks").innerText = marks;
 document.getElementById("batch").innerText = student.batch;
 document.getElementById("duration").innerText = student.duration;
-  // ✅ Certificate Button Show Fix
+// 🔥 FORCE SHOW BUTTON (TEST)
 let btn = document.getElementById("certBtn");
 
-let cert = student.certificate || student.Certificate || "";
-
-if(cert !== ""){
-  btn.href = cert;
-  btn.style.display = "inline-block";
-}else{
-  btn.style.display = "none";
-}
+btn.href = student.certificate || "https://www.google.com";
+btn.style.display = "inline-block";
 
 }else{
 
