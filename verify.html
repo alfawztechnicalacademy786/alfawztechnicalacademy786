@@ -230,7 +230,12 @@ document.getElementById("course").innerText = student.course;
 document.getElementById("marks").innerText = marks;
 document.getElementById("batch").innerText = student.batch;
 document.getElementById("duration").innerText = student.duration;
-document.getElementById("certBtn").href = student.certificate || "#";
+if(student.certificate && student.certificate !== ""){
+  document.getElementById("certBtn").href = student.certificate;
+  document.getElementById("certBtn").style.display = "inline-block";
+}else{
+  document.getElementById("certBtn").style.display = "none";
+}
 
 }else{
 
