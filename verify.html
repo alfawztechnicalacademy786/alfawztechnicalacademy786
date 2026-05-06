@@ -129,7 +129,7 @@ width:40%;
 color:#000;
 }
 
-/* STAMP (corner style) */
+/* STAMP */
 .stamp{
 position:absolute;
 bottom:15px;
@@ -181,7 +181,9 @@ font-weight:bold;
 <tr><td class="label">Batch</td><td id="batch"></td></tr>
 <tr><td class="label">Duration</td><td id="duration"></td></tr>
 </table>
+
 <br><br>
+
 <a id="certBtn" href="#" target="_blank" style="display:none;">
   <button style="padding:10px 20px;background:#007bff;color:white;border:none;border-radius:6px;">
     Download Certificate
@@ -206,15 +208,12 @@ function verify(){
 
 let roll = document.getElementById("roll").value;
 
-fetch("https://script.google.com/macros/s/AKfycbzT37zdrF_FARcNI2Pdp7NMbXWTa9BuKK9HmSt-zO9YSrrsmgp1aajjgl4SAi2PnS0Zyg/exec")
+fetch("https://script.google.com/macros/s/AKfycbzT37zdrF_FARcNI2Pdp7NMbXWTa9BuKK9HmSt-zO9YSrrsmgp1aajjgl4SAi2PnS0Zyg/exec?id="+roll)
 
 .then(res => res.json())
-.then(data => {
+.then(student => {
 
-let student = data.find(s => s.id == roll);
-console.log(student);
-
-if(student){
+if(student.status === "verified"){
 
 document.getElementById("resultBox").style.display="block";
 document.getElementById("error").style.display="none";
@@ -226,16 +225,21 @@ marks = (marks * 100).toFixed(0) + "%";
 }
 
 document.getElementById("name").innerText = student.name;
-document.getElementById("father").innerText = student.father;
+document.getElementById("father").innerText = student.father_name;
 document.getElementById("course").innerText = student.course;
 document.getElementById("marks").innerText = marks;
 document.getElementById("batch").innerText = student.batch;
 document.getElementById("duration").innerText = student.duration;
-// 🔥 FORCE SHOW BUTTON (TEST)
+
+/* ✅ FINAL CERTIFICATE BUTTON */
 let btn = document.getElementById("certBtn");
 
-btn.href = student.certificate || "https://www.google.com";
-btn.style.display = "inline-block";
+if(student.certificate && student.certificate !== ""){
+  btn.href = student.certificate;
+  btn.style.display = "inline-block";
+}else{
+  btn.style.display = "none";
+}
 
 }else{
 
