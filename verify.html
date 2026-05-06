@@ -211,7 +211,8 @@ fetch("https://script.google.com/macros/s/AKfycbzT37zdrF_FARcNI2Pdp7NMbXWTa9BuKK
 .then(res => res.json())
 .then(data => {
 
-let student = data.find(s => s.id == roll || s.id == roll.trim());
+let student = data.find(s => s.id == roll);
+console.log(student);
 
 if(student){
 
