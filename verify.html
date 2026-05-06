@@ -234,17 +234,13 @@ document.getElementById("duration").innerText = student.duration;
   // ✅ Certificate Button Show Fix
 let btn = document.getElementById("certBtn");
 
-if(student.certificate && student.certificate.trim() !== ""){
-  btn.href = student.certificate;
+let cert = student.certificate || student.Certificate || "";
+
+if(cert !== ""){
+  btn.href = cert;
   btn.style.display = "inline-block";
 }else{
   btn.style.display = "none";
-}
-if(student.certificate && student.certificate !== ""){
-  document.getElementById("certBtn").href = student.certificate;
-  document.getElementById("certBtn").style.display = "inline-block";
-}else{
-  document.getElementById("certBtn").style.display = "none";
 }
 
 }else{
