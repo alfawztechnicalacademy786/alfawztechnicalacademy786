@@ -6,154 +6,280 @@
 
 <title>Al Fawz Technical Academy</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-body {
+
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
 font-family:'Poppins',sans-serif;
+background:#f5f7fa;
+overflow-x:hidden;
 }
 
 /* NAVBAR */
-nav {
+nav{
 position:fixed;
 top:0;
+left:0;
 width:100%;
-background:rgba(0,0,0,0.85);
+background:rgba(0,0,0,0.88);
+backdrop-filter:blur(10px);
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:12px 20px;
-box-sizing:border-box;
 z-index:1000;
+box-shadow:0 2px 15px rgba(0,0,0,0.3);
 }
 
-.logo {
+/* LOGO AREA */
+.logo-box{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.logo-box img{
+width:55px;
+height:55px;
+border-radius:50%;
+object-fit:cover;
+box-shadow:0 0 15px rgba(255,215,0,0.5);
+border:2px solid rgba(255,255,255,0.2);
+}
+
+.logo-text{
 color:white;
-font-size:15px;
-font-weight:600;
+font-size:18px;
+font-weight:700;
+line-height:1.2;
+}
+
+.logo-text span{
+display:block;
+font-size:12px;
+font-weight:300;
+opacity:0.8;
 }
 
 /* RIGHT SIDE */
-.right {
+.right{
 display:flex;
 align-items:center;
-gap:15px;
+gap:18px;
 }
 
-.right a {
+.right a{
 color:white;
 text-decoration:none;
 font-size:14px;
+transition:0.3s;
 }
 
-/* MENU BUTTON FIX */
-.menu-btn {
-font-size:22px;
+.right a:hover{
+color:#00c9ff;
+}
+
+/* MENU BUTTON */
+.menu-btn{
+font-size:26px;
 color:white;
 cursor:pointer;
 padding:5px 10px;
-margin-right:10px; /* 👈 IMPORTANT FIX */
+transition:0.3s;
 }
 
-/* RIGHT SIDE SLIDE MENU */
-.side-menu {
+.menu-btn:hover{
+transform:scale(1.1);
+color:#00c9ff;
+}
+
+/* SIDE MENU */
+.side-menu{
 position:fixed;
 top:0;
-right:-260px;
-width:260px;
+right:-280px;
+width:280px;
 height:100%;
-background:#111;
-padding-top:60px;
-transition:0.3s;
+background:#111827;
+padding-top:80px;
+transition:0.4s ease;
 z-index:2000;
+box-shadow:-5px 0 20px rgba(0,0,0,0.4);
 }
 
-.side-menu a {
+.side-menu a{
 display:block;
 color:white;
-padding:15px;
+padding:16px 25px;
 text-decoration:none;
-border-bottom:1px solid #333;
+border-bottom:1px solid rgba(255,255,255,0.08);
+transition:0.3s;
+font-size:15px;
 }
 
-.side-menu a:hover {
-background:#222;
+.side-menu a:hover{
+background:#1f2937;
+padding-left:35px;
+color:#00c9ff;
 }
 
-/* HERO */
-.hero {
+/* HERO SECTION */
+.hero{
 position:relative;
 height:100vh;
 overflow:hidden;
 }
 
-.hero video {
+.hero video{
 position:absolute;
 width:100%;
 height:100%;
 object-fit:cover;
-z-index:-1;
+z-index:-2;
 }
 
-.overlay {
+.overlay{
 position:absolute;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.6);
+background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7));
+z-index:-1;
 }
 
-.hero-content {
+.hero-content{
 position:relative;
-color:white;
-text-align:center;
 top:50%;
 transform:translateY(-50%);
+text-align:center;
+color:white;
+padding:20px;
 }
 
-.hero-content h1 {
-font-size:34px;
+.hero-content h1{
+font-size:52px;
+margin-bottom:15px;
+font-weight:700;
 }
 
-.btn {
-padding:10px 20px;
+.hero-content p{
+font-size:18px;
+margin-bottom:30px;
+opacity:0.9;
+}
+
+/* BUTTONS */
+.btn{
+padding:13px 28px;
 margin:10px;
 border:none;
-border-radius:25px;
+border-radius:40px;
 cursor:pointer;
+font-size:15px;
+font-weight:600;
+transition:0.3s;
 }
 
-.blue {background:#007bff;color:white}
-.green {background:#28a745;color:white}
+.blue{
+background:#007bff;
+color:white;
+}
+
+.blue:hover{
+background:#0056b3;
+transform:translateY(-3px);
+}
+
+.green{
+background:#28a745;
+color:white;
+}
+
+.green:hover{
+background:#1e7e34;
+transform:translateY(-3px);
+}
 
 /* SECTION */
-.section {
-padding:60px 20px;
+.section{
+padding:80px 20px;
 text-align:center;
 }
 
-.cards {
+.section h2{
+font-size:36px;
+margin-bottom:40px;
+color:#111827;
+}
+
+/* CARDS */
+.cards{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
+gap:25px;
 }
 
-.card {
+.card{
 background:white;
-padding:20px;
-margin:10px;
-width:250px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
+padding:30px 20px;
+width:280px;
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 35px rgba(0,0,0,0.15);
+}
+
+.card h3{
+font-size:22px;
+color:#111827;
 }
 
 /* FOOTER */
-footer {
-background:#111;
+footer{
+background:#111827;
 color:white;
 text-align:center;
-padding:15px;
+padding:18px;
+font-size:14px;
 }
+
+/* MOBILE */
+@media(max-width:768px){
+
+.hero-content h1{
+font-size:34px;
+}
+
+.hero-content p{
+font-size:15px;
+}
+
+.logo-text{
+font-size:14px;
+}
+
+.logo-box img{
+width:45px;
+height:45px;
+}
+
+.right a{
+display:none;
+}
+
+}
+
 </style>
 </head>
 
@@ -163,15 +289,24 @@ padding:15px;
 <div class="side-menu" id="menu">
 <a href="#">Home</a>
 <a href="courses.html">Courses</a>
-<a href="verify.html">Verify</a>
-<a href="#">About</a>
+<a href="verify.html">Verify Certificate</a>
+<a href="#">About Us</a>
 <a href="#">Contact</a>
 </div>
 
 <!-- NAVBAR -->
 <nav>
 
-<div class="logo">Al Fawz Technical Academy</div>
+<div class="logo-box">
+
+<img src="logo.png" alt="Logo">
+
+<div class="logo-text">
+Al Fawz Technical Academy
+<span>Professional IT Institute</span>
+</div>
+
+</div>
 
 <div class="right">
 <a href="verify.html">Verify</a>
@@ -191,41 +326,67 @@ padding:15px;
 <div class="overlay"></div>
 
 <div class="hero-content">
-<h1>Build Your Future With Skills</h1>
-<p>Professional IT Courses & Certification</p>
 
-<a href="courses.html"><button class="btn blue">Courses</button></a>
-<a href="verify.html"><button class="btn green">Verify</button></a>
+<h1>Build Your Future With Skills</h1>
+
+<p>
+Professional IT Courses, Online Tests & Verified Certifications
+</p>
+
+<a href="courses.html">
+<button class="btn blue">Explore Courses</button>
+</a>
+
+<a href="verify.html">
+<button class="btn green">Verify Certificate</button>
+</a>
+
 </div>
 
 </div>
 
 <!-- COURSES -->
 <div class="section">
-<h2>Our Courses</h2>
+
+<h2>Our Popular Courses</h2>
 
 <div class="cards">
-<div class="card"><h3>Web Development</h3></div>
-<div class="card"><h3>Graphic Design</h3></div>
-<div class="card"><h3>Freelancing</h3></div>
+
+<div class="card">
+<h3>Web Development</h3>
+</div>
+
+<div class="card">
+<h3>Graphic Design</h3>
+</div>
+
+<div class="card">
+<h3>Freelancing</h3>
 </div>
 
 </div>
 
+</div>
+
+<!-- FOOTER -->
 <footer>
-© 2026 Al Fawz Technical Academy
+© 2026 Al Fawz Technical Academy | All Rights Reserved
 </footer>
 
 <script>
+
 function toggleMenu(){
+
 let menu = document.getElementById("menu");
 
 if(menu.style.right === "0px"){
-menu.style.right = "-260px";
+menu.style.right = "-280px";
 }else{
 menu.style.right = "0px";
 }
+
 }
+
 </script>
 
 </body>
