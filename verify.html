@@ -326,8 +326,7 @@ VERIFIED
 
 </table>
 
-<a id="certBtn" href="#" onclick="openPreview(event)" target="_blank" style="display:none;">
-
+<a id="certBtn" href="#" target="_blank">
 <button class="download-btn">
 Download Certificate
 </button>
@@ -348,42 +347,8 @@ Download Certificate
 
 </div>
 
-<!-- CERTIFICATE PREVIEW -->
-<div id="previewBox">
-
-<div class="preview-content">
-
-<button class="close-btn" onclick="closePreview()">
-X
-</button>
-
-<iframe id="previewFrame"></iframe>
-
-</div>
-
-</div>
-
 <script>
 
-/* OPEN PREVIEW */
-function openPreview(e){
-
-e.preventDefault();
-
-let link = document.getElementById("certBtn").href;
-
-document.getElementById("previewFrame").src = link;
-
-document.getElementById("previewBox").style.display = "flex";
-
-}
-
-/* CLOSE PREVIEW */
-function closePreview(){
-
-document.getElementById("previewBox").style.display = "none";
-
-}
 
 /* VERIFY */
 function verify(){
