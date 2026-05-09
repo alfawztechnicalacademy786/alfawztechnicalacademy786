@@ -3,11 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Certificate Verification</title>
-
 <style>
-
 /* BACKGROUND */
 body{
 margin:0;
@@ -66,6 +63,7 @@ border:none;
 margin-bottom:15px;
 outline:none;
 font-size:16px;
+color: #333;
 }
 
 /* BUTTON */
@@ -101,14 +99,8 @@ overflow:hidden;
 }
 
 @keyframes fade{
-from{
-opacity:0;
-transform:translateY(20px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
+from{ opacity:0; transform:translateY(20px); }
+to{ opacity:1; transform:translateY(0); }
 }
 
 /* VERIFIED RIBBON */
@@ -136,6 +128,7 @@ td{
 padding:16px;
 border-bottom:1px solid #e5e5e5;
 font-size:15px;
+text-align: left;
 }
 
 .label{
@@ -152,20 +145,23 @@ font-weight:500;
 
 /* DOWNLOAD BUTTON */
 .download-btn{
+display: inline-block;
 margin-top:25px;
 padding:14px 30px;
 background:linear-gradient(135deg,#007bff,#0056b3);
-color:white;
-border:none;
+color:white !important;
+text-decoration: none;
 border-radius:10px;
 font-size:15px;
 font-weight:600;
 cursor:pointer;
 transition:0.3s;
+border: none;
 }
 
 .download-btn:hover{
 transform:translateY(-3px);
+box-shadow: 0 5px 15px rgba(0,123,255,0.4);
 }
 
 /* STAMP */
@@ -176,8 +172,8 @@ right:15px;
 }
 
 .stamp img{
-width:150px;
-opacity:0.9;
+width:120px;
+opacity:0.8;
 transform:rotate(-15deg);
 }
 
@@ -190,229 +186,133 @@ font-weight:bold;
 font-size:16px;
 }
 
-/* PREVIEW MODAL */
-#previewBox{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.85);
-justify-content:center;
-align-items:center;
-z-index:9999;
-padding:20px;
-box-sizing:border-box;
-}
-
-.preview-content{
-width:95%;
-max-width:1000px;
-height:90%;
-background:white;
-border-radius:15px;
-overflow:hidden;
-position:relative;
-box-shadow:0 10px 40px rgba(0,0,0,0.4);
-}
-
-.close-btn{
-position:absolute;
-top:10px;
-right:10px;
-background:red;
-color:white;
-border:none;
-padding:10px 14px;
-cursor:pointer;
-border-radius:6px;
-font-weight:bold;
-z-index:10;
-}
-
-iframe{
-width:100%;
-height:100%;
-border:none;
-}
-
 /* MOBILE */
 @media(max-width:768px){
-
-input{
-width:100%;
+input{ width:100%; }
+.header h1{ font-size:24px; }
+.container{ padding:20px; }
+td{ font-size:13px; padding:12px; }
+.stamp img{ width:100px; }
 }
-
-.header h1{
-font-size:24px;
-}
-
-.container{
-padding:20px;
-}
-
-td{
-font-size:13px;
-padding:12px;
-}
-
-.stamp img{
-width:100px;
-}
-
-}
-
 </style>
-
 </head>
-
 <body>
 
 <div class="wrapper">
+    <div class="header">
+        <h1>Al Fawz Technical Academy</h1>
+        <p>Professional Certificate Verification System</p>
+    </div>
 
-<div class="header">
-<h1>Al Fawz Technical Academy</h1>
-<p>Professional Certificate Verification System</p>
-</div>
+    <div class="container">
+        <input type="text" id="roll" placeholder="Enter Roll Number">
+        <br>
+        <button class="verify-btn" onclick="verify()" id="mainVerifyBtn">
+            Verify Certificate
+        </button>
 
-<div class="container">
+        <div class="result" id="resultBox">
+            <div class="ribbon">VERIFIED</div>
+            <table>
+                <tr>
+                    <td class="label">Student Name</td>
+                    <td class="value" id="name"></td>
+                </tr>
+                <tr>
+                    <td class="label">Father Name</td>
+                    <td class="value" id="father"></td>
+                </tr>
+                <tr>
+                    <td class="label">Course</td>
+                    <td class="value" id="course"></td>
+                </tr>
+                <tr>
+                    <td class="label">Marks</td>
+                    <td class="value" id="marks"></td>
+                </tr>
+                <tr>
+                    <td class="label">Batch</td>
+                    <td class="value" id="batch"></td>
+                </tr>
+                <tr>
+                    <td class="label">Duration</td>
+                    <td class="value" id="duration"></td>
+                </tr>
+            </table>
 
-<input type="text" id="roll" placeholder="Enter Roll Number">
+            <a id="certBtn" href="#" target="_blank" class="download-btn">
+                Download Certificate
+            </a>
 
-<br>
+            <div class="stamp">
+                <img src="stamp.png" alt="Stamp">
+            </div>
+        </div>
 
-<button class="verify-btn" onclick="verify()">
-Verify Certificate
-</button>
-
-<div class="result" id="resultBox">
-
-<div class="ribbon">
-VERIFIED
-</div>
-
-<table>
-
-<tr>
-<td class="label">Student Name</td>
-<td class="value" id="name"></td>
-</tr>
-
-<tr>
-<td class="label">Father Name</td>
-<td class="value" id="father"></td>
-</tr>
-
-<tr>
-<td class="label">Course</td>
-<td class="value" id="course"></td>
-</tr>
-
-<tr>
-<td class="label">Marks</td>
-<td class="value" id="marks"></td>
-</tr>
-
-<tr>
-<td class="label">Batch</td>
-<td class="value" id="batch"></td>
-</tr>
-
-<tr>
-<td class="label">Duration</td>
-<td class="value" id="duration"></td>
-</tr>
-
-</table>
-
-<a id="certBtn" href="#" target="_blank">
-<button class="download-btn">
-Download Certificate
-</button>
-
-</a>
-
-<div class="stamp">
-<img src="stamp.png">
-</div>
-
-</div>
-
-<div class="error" id="error">
-❌ Record Not Found
-</div>
-
-</div>
-
+        <div class="error" id="error">
+            ❌ Record Not Found
+        </div>
+    </div>
 </div>
 
 <script>
-
-
-/* VERIFY */
 function verify(){
+    let roll = document.getElementById("roll").value.trim();
+    let verifyBtn = document.getElementById("mainVerifyBtn");
+    
+    if(roll === "") {
+        alert("Please enter a roll number");
+        return;
+    }
 
-let roll = document.getElementById("roll").value;
+    // Button loading state
+    verifyBtn.innerText = "Verifying...";
+    verifyBtn.disabled = true;
 
-fetch("https://script.google.com/macros/s/AKfycbzT37zdrF_FARcNI2Pdp7NMbXWTa9BuKK9HmSt-zO9YSrrsmgp1aajjgl4SAi2PnS0Zyg/exec?id="+roll)
+    fetch("https://script.google.com/macros/s/AKfycbzT37zdrF_FARcNI2Pdp7NMbXWTa9BuKK9HmSt-zO9YSrrsmgp1aajjgl4SAi2PnS0Zyg/exec?id="+roll)
+    .then(res => res.json())
+    .then(student => {
+        verifyBtn.innerText = "Verify Certificate";
+        verifyBtn.disabled = false;
 
-.then(res => res.json())
+        if(student.status === "verified"){
+            document.getElementById("resultBox").style.display = "block";
+            document.getElementById("error").style.display = "none";
 
-.then(student => {
+            /* MARKS FIX */
+            let marks = student.marks;
+            if(marks <= 1 && marks > 0){
+                marks = (marks * 100).toFixed(0) + "%";
+            }
 
-if(student.status === "verified"){
+            document.getElementById("name").innerText = student.name;
+            document.getElementById("father").innerText = student.father_name;
+            document.getElementById("course").innerText = student.course;
+            document.getElementById("marks").innerText = marks;
+            document.getElementById("batch").innerText = student.batch;
+            document.getElementById("duration").innerText = student.duration;
 
-document.getElementById("resultBox").style.display = "block";
+            /* CERTIFICATE LINK FIX */
+            let downloadLink = document.getElementById("certBtn");
+            if(student.certificate && student.certificate !== "#"){
+                downloadLink.href = student.certificate;
+                downloadLink.style.display = "inline-block";
+            } else {
+                downloadLink.style.display = "none";
+            }
 
-document.getElementById("error").style.display = "none";
-
-/* MARKS FIX */
-let marks = student.marks;
-
-if(marks <= 1){
-marks = (marks * 100).toFixed(0) + "%";
+        } else {
+            document.getElementById("resultBox").style.display = "none";
+            document.getElementById("error").style.display = "block";
+        }
+    })
+    .catch(err => {
+        console.error("Error:", err);
+        verifyBtn.innerText = "Verify Certificate";
+        verifyBtn.disabled = false;
+        alert("Something went wrong. Please try again.");
+    });
 }
-
-document.getElementById("name").innerText = student.name;
-
-document.getElementById("father").innerText = student.father_name;
-
-document.getElementById("course").innerText = student.course;
-
-document.getElementById("marks").innerText = marks;
-
-document.getElementById("batch").innerText = student.batch;
-
-document.getElementById("duration").innerText = student.duration;
-
-/* CERTIFICATE BUTTON */
-let btn = document.getElementById("certBtn");
-
-if(student.certificate && student.certificate !== ""){
-
-btn.href = student.certificate;
-
-btn.style.display = "inline-block";
-
-}else{
-
-btn.style.display = "none";
-
-}
-
-}else{
-
-document.getElementById("resultBox").style.display = "none";
-
-document.getElementById("error").style.display = "block";
-
-}
-
-});
-
-}
-
 </script>
 
 </body>
