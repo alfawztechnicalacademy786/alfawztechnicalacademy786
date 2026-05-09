@@ -265,7 +265,6 @@ function verify(){
         return;
     }
 
-    // Button loading state
     verifyBtn.innerText = "Verifying...";
     verifyBtn.disabled = true;
 
@@ -279,7 +278,6 @@ function verify(){
             document.getElementById("resultBox").style.display = "block";
             document.getElementById("error").style.display = "none";
 
-            /* MARKS FIX */
             let marks = student.marks;
             if(marks <= 1 && marks > 0){
                 marks = (marks * 100).toFixed(0) + "%";
@@ -293,27 +291,30 @@ function verify(){
             document.getElementById("duration").innerText = student.duration;
 
             /* CERTIFICATE LINK FIX */
-let downloadLink = document.getElementById("certBtn");
+            let downloadLink = document.getElementById("certBtn");
+            console.log("Received Link:", student.certificate);
 
-// Test karne ke liye main console mein link print kar raha hoon
-console.log("Received Link:", student.certificate);
-
-if(student.certificate && student.certificate !== "#" && student.certificate !== ""){
-    downloadLink.href = student.certificate;
-    downloadLink.style.display = "inline-block"; // Button dikhao
-} else {
-    // Agar link nahi mil raha toh temporary button dikhao taake humein pata chale
-    downloadLink.href = "#";
-    downloadLink.innerText = "Link Not Found in Sheet";
-    downloadLink.style.display = "inline-block";
-    downloadLink.style.background = "red";
-}
+            if(student.certificate && student.certificate !== "#" && student.certificate !== ""){
+                downloadLink.href = student.certificate;
+                downloadLink.innerText = "Download Certificate";
+                downloadLink.style.background = "linear-gradient(135deg,#007bff,#0056b3)";
+                downloadLink.style.display = "inline-block";
+            } else {
+                downloadLink.href = "#";
+                downloadLink.innerText = "Link Not Found in Sheet";
+                downloadLink.style.background = "red";
+                downloadLink.style.display = "inline-block";
+            }
+        } else {
+            document.getElementById("resultBox").style.display = "none";
+            document.getElementById("error").style.display = "block";
+        }
     })
     .catch(err => {
         console.error("Error:", err);
         verifyBtn.innerText = "Verify Certificate";
         verifyBtn.disabled = false;
-        alert("Something went wrong. Please try again.");
+        alert("Something went wrong. Please check your internet or script URL.");
     });
 }
 </script>
