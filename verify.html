@@ -4,8 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Certificate Verification</title>
+
 <style>
-/* BACKGROUND */
+
 body{
 margin:0;
 font-family:'Segoe UI',sans-serif;
@@ -18,13 +19,11 @@ padding:20px;
 box-sizing:border-box;
 }
 
-/* MAIN WRAPPER */
 .wrapper{
 width:100%;
 max-width:950px;
 }
 
-/* HEADER */
 .header{
 color:white;
 text-align:center;
@@ -43,7 +42,6 @@ opacity:0.85;
 font-size:16px;
 }
 
-/* MAIN CARD */
 .container{
 background:rgba(255,255,255,0.08);
 backdrop-filter:blur(20px);
@@ -54,7 +52,6 @@ color:white;
 text-align:center;
 }
 
-/* INPUT */
 input{
 width:75%;
 padding:14px;
@@ -63,10 +60,9 @@ border:none;
 margin-bottom:15px;
 outline:none;
 font-size:16px;
-color: #333;
+color:#333;
 }
 
-/* BUTTON */
 .verify-btn{
 padding:13px 35px;
 background:linear-gradient(135deg,#00c9ff,#007bff);
@@ -84,7 +80,6 @@ transform:translateY(-2px);
 opacity:0.9;
 }
 
-/* RESULT CARD */
 .result{
 margin-top:30px;
 padding:30px;
@@ -99,11 +94,16 @@ overflow:hidden;
 }
 
 @keyframes fade{
-from{ opacity:0; transform:translateY(20px); }
-to{ opacity:1; transform:translateY(0); }
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
-/* VERIFIED RIBBON */
 .ribbon{
 position:absolute;
 top:0;
@@ -117,7 +117,6 @@ font-weight:bold;
 letter-spacing:1px;
 }
 
-/* TABLE */
 table{
 width:100%;
 border-collapse:collapse;
@@ -128,7 +127,7 @@ td{
 padding:16px;
 border-bottom:1px solid #e5e5e5;
 font-size:15px;
-text-align: left;
+text-align:left;
 }
 
 .label{
@@ -143,28 +142,24 @@ color:#111;
 font-weight:500;
 }
 
-/* DOWNLOAD BUTTON */
 .download-btn{
-display: inline-block;
+display:inline-block;
 margin-top:25px;
 padding:14px 30px;
 background:linear-gradient(135deg,#007bff,#0056b3);
-color:white !important;
-text-decoration: none;
+color:white;
+text-decoration:none;
 border-radius:10px;
 font-size:15px;
 font-weight:600;
-cursor:pointer;
 transition:0.3s;
-border: none;
 }
 
 .download-btn:hover{
 transform:translateY(-3px);
-box-shadow: 0 5px 15px rgba(0,123,255,0.4);
+box-shadow:0 5px 15px rgba(0,123,255,0.4);
 }
 
-/* STAMP */
 .stamp{
 position:absolute;
 bottom:15px;
@@ -177,7 +172,6 @@ opacity:0.8;
 transform:rotate(-15deg);
 }
 
-/* ERROR */
 .error{
 margin-top:20px;
 color:#ff4d4d;
@@ -186,137 +180,208 @@ font-weight:bold;
 font-size:16px;
 }
 
-/* MOBILE */
 @media(max-width:768px){
-input{ width:100%; }
-.header h1{ font-size:24px; }
-.container{ padding:20px; }
-td{ font-size:13px; padding:12px; }
-.stamp img{ width:100px; }
+
+input{
+width:100%;
 }
+
+.header h1{
+font-size:24px;
+}
+
+.container{
+padding:20px;
+}
+
+td{
+font-size:13px;
+padding:12px;
+}
+
+.stamp img{
+width:100px;
+}
+
+}
+
 </style>
 </head>
+
 <body>
 
 <div class="wrapper">
-    <div class="header">
-        <h1>Al Fawz Technical Academy</h1>
-        <p>Professional Certificate Verification System</p>
-    </div>
 
-    <div class="container">
-        <input type="text" id="roll" placeholder="Enter Roll Number">
-        <br>
-        <button class="verify-btn" onclick="verify()" id="mainVerifyBtn">
-            Verify Certificate
-        </button>
+<div class="header">
+<h1>Al Fawz Technical Academy</h1>
+<p>Professional Certificate Verification System</p>
+</div>
 
-        <div class="result" id="resultBox">
-            <div class="ribbon">VERIFIED</div>
-            <table>
-                <tr>
-                    <td class="label">Student Name</td>
-                    <td class="value" id="name"></td>
-                </tr>
-                <tr>
-                    <td class="label">Father Name</td>
-                    <td class="value" id="father"></td>
-                </tr>
-                <tr>
-                    <td class="label">Course</td>
-                    <td class="value" id="course"></td>
-                </tr>
-                <tr>
-                    <td class="label">Marks</td>
-                    <td class="value" id="marks"></td>
-                </tr>
-                <tr>
-                    <td class="label">Batch</td>
-                    <td class="value" id="batch"></td>
-                </tr>
-                <tr>
-                    <td class="label">Duration</td>
-                    <td class="value" id="duration"></td>
-                </tr>
-            </table>
+<div class="container">
 
-            <a id="certBtn" href="#" target="_blank" class="download-btn">
-                Download Certificate
-            </a>
+<input type="text" id="roll" placeholder="Enter Roll Number">
 
-            <div class="stamp">
-                <img src="stamp.png" alt="Stamp">
-            </div>
-        </div>
+<br>
 
-        <div class="error" id="error">
-            ❌ Record Not Found
-        </div>
-    </div>
+<button class="verify-btn" onclick="verify()" id="mainVerifyBtn">
+Verify Certificate
+</button>
+
+<div class="result" id="resultBox">
+
+<div class="ribbon">VERIFIED</div>
+
+<table>
+
+<tr>
+<td class="label">Student Name</td>
+<td class="value" id="name"></td>
+</tr>
+
+<tr>
+<td class="label">Father Name</td>
+<td class="value" id="father"></td>
+</tr>
+
+<tr>
+<td class="label">Course</td>
+<td class="value" id="course"></td>
+</tr>
+
+<tr>
+<td class="label">Marks</td>
+<td class="value" id="marks"></td>
+</tr>
+
+<tr>
+<td class="label">Batch</td>
+<td class="value" id="batch"></td>
+</tr>
+
+<tr>
+<td class="label">Duration</td>
+<td class="value" id="duration"></td>
+</tr>
+
+</table>
+
+<a id="certBtn" href="#" target="_blank" class="download-btn">
+Download Certificate
+</a>
+
+<div class="stamp">
+<img src="stamp.png" alt="Stamp">
+</div>
+
+</div>
+
+<div class="error" id="error">
+❌ Record Not Found
+</div>
+
+</div>
+
 </div>
 
 <script>
+
 function verify(){
-    let roll = document.getElementById("roll").value.trim();
-    let verifyBtn = document.getElementById("mainVerifyBtn");
-    
-    if(roll === "") {
-        alert("Please enter a roll number");
-        return;
-    }
 
-    verifyBtn.innerText = "Verifying...";
-    verifyBtn.disabled = true;
+let roll = document.getElementById("roll").value.trim();
 
-    fetch("https://script.google.com/macros/s/AKfycbzT37zdrF_FARcNI2Pdp7NMbXWTa9BuKK9HmSt-zO9YSrrsmgp1aajjgl4SAi2PnS0Zyg/exec"+roll)
-    .then(res => res.json())
-    .then(student => {
-        verifyBtn.innerText = "Verify Certificate";
-        verifyBtn.disabled = false;
+let verifyBtn = document.getElementById("mainVerifyBtn");
 
-        if(student.status === "verified"){
-            document.getElementById("resultBox").style.display = "block";
-            document.getElementById("error").style.display = "none";
+if(roll === ""){
 
-            let marks = student.marks;
-            if(marks <= 1 && marks > 0){
-                marks = (marks * 100).toFixed(0) + "%";
-            }
+alert("Please enter a roll number");
 
-            document.getElementById("name").innerText = student.name;
-            document.getElementById("father").innerText = student.father_name;
-            document.getElementById("course").innerText = student.course;
-            document.getElementById("marks").innerText = marks;
-            document.getElementById("batch").innerText = student.batch;
-            document.getElementById("duration").innerText = student.duration;
+return;
 
-            /* CERTIFICATE LINK FIX */
-            let downloadLink = document.getElementById("certBtn");
-            console.log("Received Link:", student.certificate);
-
-            if(student.certificate && student.certificate !== "#" && student.certificate !== ""){
-                downloadLink.href = student.certificate;
-                downloadLink.innerText = "Download Certificate";
-                downloadLink.style.background = "linear-gradient(135deg,#007bff,#0056b3)";
-                downloadLink.style.display = "inline-block";
-            } else {
-                downloadLink.href = "#";
-                downloadLink.innerText = "Link Not Found in Sheet";
-                downloadLink.style.background = "red";
-                downloadLink.style.display = "inline-block";
-            }
-        } else {
-            document.getElementById("resultBox").style.display = "none";
-            document.getElementById("error").style.display = "block";
-        }
-    })
-    .catch(err => {
-        console.error("Error:", err);
-        verifyBtn.innerText = "Verify Certificate";
-        verifyBtn.disabled = false;
-        alert("Something went wrong. Please check your internet or script URL.");
-    });
 }
+
+verifyBtn.innerText = "Verifying...";
+verifyBtn.disabled = true;
+
+/* ✅ FIXED URL */
+fetch("https://script.google.com/macros/s/AKfycbzT37zdrF_FARcNI2Pdp7NMbXWTa9BuKK9HmSt-zO9YSrrsmgp1aajjgl4SAi2PnS0Zyg/exec?id=" + roll)
+
+.then(res => res.json())
+
+.then(student => {
+
+verifyBtn.innerText = "Verify Certificate";
+verifyBtn.disabled = false;
+
+if(student.status === "verified"){
+
+document.getElementById("resultBox").style.display = "block";
+
+document.getElementById("error").style.display = "none";
+
+let marks = student.marks;
+
+if(marks <= 1 && marks > 0){
+
+marks = (marks * 100).toFixed(0) + "%";
+
+}
+
+document.getElementById("name").innerText = student.name;
+
+document.getElementById("father").innerText = student.father_name;
+
+document.getElementById("course").innerText = student.course;
+
+document.getElementById("marks").innerText = marks;
+
+document.getElementById("batch").innerText = student.batch;
+
+document.getElementById("duration").innerText = student.duration;
+
+let downloadLink = document.getElementById("certBtn");
+
+if(student.certificate && student.certificate !== "#"){
+
+downloadLink.href = student.certificate;
+
+downloadLink.innerText = "Download Certificate";
+
+downloadLink.style.display = "inline-block";
+
+}else{
+
+downloadLink.href = "#";
+
+downloadLink.innerText = "Certificate Link Not Found";
+
+downloadLink.style.display = "inline-block";
+
+}
+
+}else{
+
+document.getElementById("resultBox").style.display = "none";
+
+document.getElementById("error").style.display = "block";
+
+}
+
+})
+
+.catch(err => {
+
+console.log(err);
+
+verifyBtn.innerText = "Verify Certificate";
+
+verifyBtn.disabled = false;
+
+alert("Something went wrong. Check Apps Script Web App URL.");
+
+});
+
+}
+
 </script>
 
 </body>
