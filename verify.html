@@ -268,7 +268,7 @@ function verify(){
     verifyBtn.innerText = "Verifying...";
     verifyBtn.disabled = true;
 
-    fetch("https://script.google.com/macros/s/AKfycbzT37zdrF_FARcNI2Pdp7NMbXWTa9BuKK9HmSt-zO9YSrrsmgp1aajjgl4SAi2PnS0Zyg/exec?id="+roll)
+    fetch("https://script.google.com/macros/s/AKfycbzT37zdrF_FARcNI2Pdp7NMbXWTa9BuKK9HmSt-zO9YSrrsmgp1aajjgl4SAi2PnS0Zyg/exec"+roll)
     .then(res => res.json())
     .then(student => {
         verifyBtn.innerText = "Verify Certificate";
