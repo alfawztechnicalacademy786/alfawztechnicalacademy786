@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alfawztechnicalacademy786.github.io/alfawztechnicalacademy786/sitemap.xml
