@@ -16,6 +16,8 @@ font-family:'Poppins',sans-serif;
 background:#f5f7fa;
 }
 
+/* HEADER */
+
 header{
 background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
 padding:80px 20px;
@@ -33,11 +35,15 @@ font-size:18px;
 opacity:0.9;
 }
 
+/* CONTAINER */
+
 .container{
 max-width:1100px;
 margin:auto;
 padding:70px 20px;
 }
+
+/* ABOUT BOX */
 
 .about-box{
 background:white;
@@ -49,11 +55,37 @@ font-size:17px;
 color:#444;
 }
 
+/* CEREMONY SECTION */
+
+.ceremony-section{
+margin-top:50px;
+text-align:center;
+}
+
+.ceremony-section img{
+width:100%;
+max-width:950px;
+border-radius:20px;
+box-shadow:0 10px 35px rgba(0,0,0,0.2);
+pointer-events:none;
+user-select:none;
+}
+
+.ceremony-section p{
+margin-top:18px;
+font-size:17px;
+line-height:1.8;
+color:#444;
+font-weight:500;
+}
+
+/* FEATURES */
+
 .features{
 display:flex;
 flex-wrap:wrap;
 gap:25px;
-margin-top:40px;
+margin-top:50px;
 justify-content:center;
 }
 
@@ -72,10 +104,17 @@ transform:translateY(-8px);
 }
 
 .feature h2{
-font-size:36px;
+font-size:38px;
 color:#007bff;
 margin-bottom:10px;
 }
+
+.feature p{
+font-size:16px;
+color:#555;
+}
+
+/* FOOTER */
 
 footer{
 background:#111827;
@@ -83,6 +122,34 @@ color:white;
 text-align:center;
 padding:18px;
 margin-top:50px;
+font-size:14px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+header h1{
+font-size:34px;
+}
+
+header p{
+font-size:15px;
+}
+
+.about-box{
+padding:25px;
+font-size:15px;
+}
+
+.ceremony-section p{
+font-size:15px;
+}
+
+.feature{
+width:100%;
+}
+
 }
 
 </style>
@@ -100,7 +167,7 @@ margin-top:50px;
 <div class="about-box">
 
 <p>
-Al Fawz Technical Academy is a trusted professional educational institute that has been serving students since 2011. Over the years, the academy has successfully trained a large number of students in modern digital and technical skills.
+Al Fawz Technical Academy is a trusted professional educational institute that has been serving students since 2011. Over the years, the academy has successfully trained thousands of students in modern digital and technical skills.
 </p>
 
 <p>
@@ -120,6 +187,20 @@ Our mission is to empower the youth with modern education and create better care
 </p>
 
 </div>
+
+<!-- CEREMONY IMAGE -->
+
+<div class="ceremony-section">
+
+<img src="ceremony.jpg" alt="Farewell Ceremony">
+
+<p>
+Al Fawz Technical Academy Farewell Ceremony 2024 — celebrating the achievements, success, and bright future of our talented students.
+</p>
+
+</div>
+
+<!-- FEATURES -->
 
 <div class="features">
 
@@ -143,7 +224,7 @@ Our mission is to empower the youth with modern education and create better care
 </div>
 
 <footer>
-© 2026 Al Fawz Technical Academy
+© 2026 Al Fawz Technical Academy | All Rights Reserved
 </footer>
 
 </body>
