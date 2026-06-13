@@ -458,7 +458,23 @@ display:none;
 }
 
 }
+/* CAMPUS PHOTO */
 
+.campus-photo{
+margin:40px auto;
+max-width:1000px;
+overflow:hidden;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.campus-photo img{
+width:100%;
+display:block;
+pointer-events:none;
+user-select:none;
+-webkit-user-drag:none;
+}
 </style>
 </head>
 
@@ -516,6 +532,16 @@ Al Fawz Technical Academy
 <p>
 Professional IT Courses, Online Tests & Verified Certifications
 </p>
+<!-- CAMPUS PHOTO -->
+
+<div class="campus-photo">
+
+<img src="campus.png"
+alt="Campus Life"
+draggable="false"
+oncontextmenu="return false;">
+
+</div>
 
 <a href="courses.html">
 <button class="btn blue">Explore Courses</button>
@@ -527,35 +553,6 @@ Professional IT Courses, Online Tests & Verified Certifications
 
 </div>
 
-
-<!-- CAMPUS SHOWCASE -->
-
-<section style="padding:80px 20px;background:#ffffff;text-align:center;">
-
-<h2 style="font-size:38px;color:#111827;margin-bottom:15px;">
-Campus Life & Learning Environment
-</h2>
-
-<p style="max-width:900px;margin:auto;color:#666;line-height:1.8;margin-bottom:35px;">
-A glimpse into our classrooms, hostel facilities, learning environment and student activities.
-</p>
-
-<img
-src="campus.png"
-alt="Campus"
-draggable="false"
-oncontextmenu="return false;"
-style="
-width:95%;
-max-width:1300px;
-border-radius:20px;
-box-shadow:0 15px 40px rgba(0,0,0,0.20);
-user-select:none;
--webkit-user-drag:none;
-pointer-events:none;
-">
-
-</section>
 </div>
 <!-- LEADERSHIP SECTION -->
 
@@ -737,7 +734,12 @@ menu.style.right = "0px";
 
 }
 document.addEventListener("contextmenu", event => event.preventDefault());
-</script>
+<script>
 
+document.addEventListener("contextmenu", function(e){
+e.preventDefault();
+});
+
+</script>
 </body>
 </html>
